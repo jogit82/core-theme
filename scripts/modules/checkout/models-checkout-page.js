@@ -826,10 +826,10 @@ var CheckoutPage = Backbone.MozuModel.extend({
                 return isValid;
             },
             syncApiModel: function () {
+                Backbone.MozuModel.prototype.syncApiModel.apply(this);
                 if (this.get('submittedDate')) {
                     window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory || '') + "/checkoutv2/" + this.get('id'); 
                 }
-                Backbone.MozuModel.prototype.syncApiModel.apply(this);
             },
             submit: function () {
                 var checkout = this,

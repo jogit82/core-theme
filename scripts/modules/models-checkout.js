@@ -1841,10 +1841,10 @@
                 });
             },
             syncApiModel: function () {
+                Backbone.MozuModel.prototype.syncApiModel.apply(this);
                 if (this.get('submittedDate')) {
                     window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory || '') + "/checkout/" + this.get('id');
                 }
-                Backbone.MozuModel.prototype.syncApiModel.apply(this);
             },
             addBillingContact: function () {
                 return this.addCustomerContact('billingInfo', 'billingContact', [{ name: 'Billing' }]);
