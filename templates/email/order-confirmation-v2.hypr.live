@@ -61,7 +61,7 @@
                 <div>{{ payment.billingInfo.billingContact.email }}</div>
               </div>
             {% endif %}
-            {% if payment.billingInfo.paymentType == "StoreCredit" or payment.billingInfo.paymentType == "GiftCard" or payment.billingInfo.paymentType|lower == "paypalexpress2" or payment.billingInfo.paymentType|lower == "paywithamazon" %}
+            {% if payment.billingInfo.paymentType == "StoreCredit" or payment.billingInfo.paymentType == "GiftCard" or payment.billingInfo.paymentType|lower == "paypalexpress2" or payment.billingInfo.paymentType|lower == "paywithamazon" or payment.billingInfo.paymentType|lower == "token" %}
               <div class="mz-l-stack-item">
                {% if  payment.billingInfo.paymentType|lower == "paypalexpress2"  %}
                  <b>{{ labels.paymentMethod }}</b>: {{ labels.paypalExpress }}
