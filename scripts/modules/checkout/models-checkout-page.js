@@ -827,7 +827,7 @@ var CheckoutPage = Backbone.MozuModel.extend({
             },
             syncApiModel: function () {
                 if (this.get('submittedDate')) {
-                    window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory || '') + "/checkoutv2";
+                    window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory || '') + "/checkoutv2/" + this.get('id');
                 }
                 Backbone.MozuModel.prototype.syncApiModel.apply(this);
             },

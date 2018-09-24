@@ -322,7 +322,7 @@ define(["modules/api", 'underscore', "modules/backbone-mozu", "hyprlive", "modul
             },
             syncApiModel: function () {
                 if (this.get('submittedDate')) {
-                    window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory || '') + "/checkout";
+                    window.location = (HyprLiveContext.locals.siteContext.siteSubdirectory || '') + "/checkout/" + this.get('id');
                 }
                 Backbone.MozuModel.prototype.syncApiModel.apply(this);
             },
