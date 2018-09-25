@@ -61,19 +61,11 @@
                 <div>{{ payment.billingInfo.billingContact.email }}</div>
               </div>
             {% endif %}
-            {% if payment.billingInfo.paymentType == "StoreCredit" or payment.billingInfo.paymentType == "GiftCard" or payment.billingInfo.paymentType|lower == "paypalexpress2" or payment.billingInfo.paymentType|lower == "paywithamazon" or payment.billingInfo.paymentType|lower == "token" %}
+            {% if payment.billingInfo.paymentType == "StoreCredit" or payment.billingInfo.paymentType == "GiftCard" or payment.billingInfo.paymentType|lower == "paypalexpress2" or payment.billingInfo.paymentType|lower == "paywithamazon" %}
               <div class="mz-l-stack-item">
                {% if  payment.billingInfo.paymentType|lower == "paypalexpress2"  %}
                  <b>{{ labels.paymentMethod }}</b>: {{ labels.paypalExpress }}
                {% endif %}
-               {% if payment.paymentType|lower == "token" %}
-                  {% if payment.billingInfo.token.type|lower == "paywithamazon" %}
-                    <b>{{ labels.paymentMethod }}</b>: {{ labels.payWithAmazon }}
-                  {% endif %}
-                  {% if payment.billingInfo.token.type|lower == "applepay" %}
-                    <b>{{ labels.paymentMethod }}</b>: {{ labels.applePay }}
-                  {% endif %}
-               {%endif%}
                {% if payment.billingInfo.paymentType == "StoreCredit" %}
                   <small>{{ labels.digitalCreditCode }}</small>
                   <div>{{ payment.billingInfo.storeCreditCode }}</div>
@@ -84,6 +76,18 @@
                {% endif %}
               </div>
             {% else %}
+              {% if payment.paymentType|lower == "token" %}
+              <div class="mz-l-stack-item">
+                 {% if payment.billingInfo.token.type|lower == "paywithamazon" %}
+                   <small>{{ labels.paymentMethod }}</small>
+                   <div>{{ labels.payWithAmazon }}</div>
+                 {% endif %}
+                 {% if payment.billingInfo.token.type|lower == "applepay" %}
+                   <small>{{ labels.paymentMethod }}</small>
+                   <div>{{ labels.applePay }}</div>
+                 {% endif %}
+               </div>
+              {% endif %}
               <div class="mz-l-stack-item">
                 <small>{{ labels.billingName }}</small>
                 <div>{{ payment.billingInfo.billingContact.firstName }} {{ payment.billingInfo.billingContact.lastNameOrSurname }}</div>
